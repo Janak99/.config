@@ -87,7 +87,7 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 set relativenumber
 set hidden
-
+set noeb vb t_vb=
 set smarttab
 set cindent
 set tabstop=2
@@ -99,15 +99,12 @@ set expandtab
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 "colorscheme setup
-if (has("termguicolors"))
- set termguicolors
-endif
+set termguicolors
 
 " Theme
 syntax enable
 syntax on
-colorscheme one
-set background=dark
+colorscheme gruvbox
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active

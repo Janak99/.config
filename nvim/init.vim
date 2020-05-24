@@ -2,12 +2,14 @@
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'unblevable/quick-scope'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -24,12 +26,67 @@ let g:lightline = {
 """""""""""""""""""""""""""""""
 "auto complete
 """""""""""""""""""""""""""""'
-let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
-nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
-"nnoremap <buffer> <silent> <leader>gi :YcmCompleter GoToReferences<CR>
-"nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+""""""""""""""""""""""""""quickscope""""""""""""""""""""""""""
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Trigger a highlight only when pressing f and F.
+let g:qs_highlight_on_keys = ['f', 'F']
+
+highlight QuickScopePrimary guifg='#5cb8e6' gui=underline ctermfg=75 cterm=underline
+highlight QuickScopeSecondary guifg='#fca090' gui=underline ctermfg=196 cterm=underline
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -59,7 +116,7 @@ nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fl :Lines<CR>
 inoremap jk <ESC>
 "nerd tree
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-o> :NERDTreeToggle<CR>
 vnoremap ++ <plug>NERDCommenterToggle
 nnoremap ++ <plug>NERDCommenterToggle
 "visual
@@ -75,8 +132,9 @@ nnoremap <leader>q :q<CR>
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * NERDTree
 
-
+""""""""""""""""""""""""""""""""""""""""
 "auto pairs
+""""""""""""""""""""""""""""""""""""""""
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 
@@ -110,6 +168,7 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 set number
+set termguicolors
 "set relativenumber
 set hidden
 set noeb vb t_vb=
@@ -121,14 +180,24 @@ set shiftwidth=2
 set expandtab
 set lazyredraw
 set ttyfast
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+" Give more space for displaying messages.
+set cmdheight=2
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 "colorscheme setup
 set termguicolors
-
-" Theme
-syntax enable
+set background=dark
 syntax on
 colorscheme gruvbox
 
@@ -149,16 +218,6 @@ endfunction
 
 " Highlight currently open buffer in NERDTree
 autocmd BufEnter * call SyncTree()
-
-" from readme
-" if hidden is not set, TextEdit might fail.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 

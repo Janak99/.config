@@ -2,6 +2,7 @@
 "MAPPINGS
 """""""""""""""""""""""""""""""""""""""""""""""""""
 "window navigation
+"function for new window if dne
 function! WinMove(key)
     let t:curwin = winnr()
     exec "wincmd ".a:key
@@ -15,15 +16,19 @@ function! WinMove(key)
     endif
 endfunction
 
-nnoremap <silent> <leader>h :call WinMove('h')<CR>
-nnoremap <silent> <leader>j :call WinMove('j')<CR>
-nnoremap <silent> <leader>k :call WinMove('k')<CR>
-nnoremap <silent> <leader>l :call WinMove('l')<CR>
+nnoremap <silent> <C-h> :call WinMove('h')<CR>
+nnoremap <silent> <C-j> :call WinMove('j')<CR>
+nnoremap <silent> <C-k> :call WinMove('k')<CR>
+nnoremap <silent> <C-l> :call WinMove('l')<CR>
 "fuzzy finder
-nnoremap <leader>ff :Files<CR>
-nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>fl :Lines<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>l :Lines<CR>
+nnoremap <leader>m :Marks<CR>
+nnoremap <leader>t :Tags<CR>
+"escape from insert
 inoremap jk <ESC>
+inoremap kj <ESC>
 "nerd tree
 nnoremap <C-o> :NERDTreeToggle<CR>
 vnoremap ++ <plug>NERDCommenterToggle

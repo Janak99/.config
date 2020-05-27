@@ -1,7 +1,9 @@
 " """""""""""""" PLUGINS """"""""""""""""""""
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
+Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
+Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'unblevable/quick-scope'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }

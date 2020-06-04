@@ -31,8 +31,6 @@ inoremap jk <ESC>
 inoremap kj <ESC>
 "nerd tree
 nnoremap <C-o> :NERDTreeToggle<CR>
-vnoremap ++ <plug>NERDCommenterToggle
-nnoremap ++ <plug>NERDCommenterToggle
 "visual
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>

@@ -1,12 +1,18 @@
+"Load in plugins thru vim-plug
 source $HOME/.config/nvim/vim-plug/plugins.vim
+"General settings for vim
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/mappings.vim
+"Config for each plugin
 source $HOME/.config/nvim/plug-config/lightline.vim
 source $HOME/.config/nvim/plug-config/coc.vim
+source $HOME/.config/nvim/plug-config/nerdtree.vim
+source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/quickscope.vim
 source $HOME/.config/nvim/plug-config/autopairs.vim
-source $HOME/.config/nvim/plug-config/nerdtree.vim
-"source $HOME/.config/nvim/plug-config/.vim
+source $HOME/.config/nvim/plug-config/start.vim
+"source $HOME/.config/nvim/plug-config/devicons.vim
+
 
 
 " vim-prettier

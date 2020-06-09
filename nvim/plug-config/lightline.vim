@@ -1,8 +1,8 @@
 "PROMPT LINE
-let g:lightline = {
-      \'colorscheme':'deus',
-      \}
 
+let g:lightline = {
+      \'colorscheme':'OldHope',
+      \}
 let g:lightline = {
       \ 'component_function': {
       \   'filetype': 'MyFiletype',
@@ -17,4 +17,5 @@ endfunction
 function! MyFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
+
 

@@ -20,6 +20,8 @@ source $HOME/.config/nvim/plug-config/start.vim
 "let g:prettier#quickfix_auto_focus = 0
 " run prettier on save
 let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_italic=1
 colorscheme gruvbox
+set background=dark                     " tell vim what the background color looks like

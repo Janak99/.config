@@ -18,8 +18,8 @@ source $HOME/.config/nvim/plug-config/start.vim
 " vim-prettier
 "let g:prettier#quickfix_enabled = 0
 "let g:prettier#quickfix_auto_focus = 0
-" run prettier on save
-let g:prettier#autoformat = 0
+"" run prettier on save
+"let g:prettier#autoformat = 0
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let g:gruvbox_contrast_dark='medium'
 let g:gruvbox_italic=1

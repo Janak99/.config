@@ -1,6 +1,7 @@
 " """""""""""""" PLUGINS """"""""""""""""""""
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 Plug 'mhinz/vim-startify'

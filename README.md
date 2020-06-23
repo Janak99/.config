@@ -1,5 +1,5 @@
-# Development Config #
-### Main Elements ###
+# Development Config 
+### Main Elements 
 * NeoVim
   * Plugins Load
   * Settings

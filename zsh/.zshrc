@@ -29,7 +29,7 @@ source $ZDOTDIR/aliases.zsh
 eval "$(starship init zsh)"
 
 # suggestions
-
+source $ZDOTDIR/plugins/zsh-autosuggestions.zsh
 # more completions
 
 # nnn quit CD

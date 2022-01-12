@@ -1,12 +1,16 @@
 # ~/.config/starship.toml
 
-# dont print newline
+# Don't print newline
 add_newline = false
+[line_break]
+disabled = true
 
+# Main prompt character before input
 [character]
 success_symbol = "[➜](#00ff00)"
-error_symbol = "[](bold red)"
+error_symbol = "[✖](bold red)"
 
+# Directory module edits
 [directory]
 truncation_length = 5
 truncate_to_repo = false

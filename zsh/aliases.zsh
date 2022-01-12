@@ -1,6 +1,10 @@
-# ls
+# +----+
+# | ls |
+# +----+
 
-# Git
+# +-----+
+# | Git |
+# +-----+
 alias gs="git status"
 alias ga='git add'
 alias gp='git push'

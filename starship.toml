@@ -1,0 +1,4 @@
+# ~/.config/starship.toml
+
+[character]
+error_symbol = "[](bold red)"

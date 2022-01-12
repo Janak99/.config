@@ -1,4 +1,14 @@
 # ~/.config/starship.toml
 
+# dont print newline
+add_newline = false
+
 [character]
+success_symbol = "[➜](#00ff00)"
 error_symbol = "[](bold red)"
+
+[directory]
+truncation_length = 5
+truncate_to_repo = false
+style = '#e5f2ae'
+format = "[$path]($style) "

@@ -18,7 +18,7 @@ gcm() {
     fi
 }
 alias grm='git rm --cached'
-alias grmd='git rm -r --cached'
+alias grmr='git rm -r --cached'
 alias gd='git diff'
 alias gco='git checkout'
 alias gl='git log'

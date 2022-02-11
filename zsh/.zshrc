@@ -25,9 +25,12 @@ source $ZDOTDIR/aliases.zsh
 # | Plugins |
 # +---------+
 
+# jump around with z
+source $ZDOTDIR/plugins/z.sh
 # starship prompt
 eval "$(starship init zsh)"
-
+# highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # suggestions
 source $ZDOTDIR/plugins/zsh-autosuggestions.zsh
 # more completions

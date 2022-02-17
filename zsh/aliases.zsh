@@ -1,7 +1,17 @@
+# +---------+
+# | General |
+# +---------+
+# delete log files from home
+alias dl='sudo rm -rf /private/var/log/asl/*.asl'
+
+
 # +----+
 # | ls |
 # +----+
-
+alias ls='ls -G'
+alias ll='ls -G -l'
+alias ldot='ls -G -ld .*'
+alias la='ls -lahF'
 # +-----+
 # | Git |
 # +-----+
